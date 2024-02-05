@@ -9,7 +9,7 @@ interface Props {}
 const Homepage = (props: Props) => {
   const {object, setObject}:any = useContext(ChatAppContext);
   const handleClick = (e:any) => {
-    setObject({...object, weather:"Cold"});
+    // setObject({...object, weather:"Cold"});
   }
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Homepage = (props: Props) => {
     <div>
       <h1>Homepage</h1>
       <button onClick={handleClick}>Press me</button>
-      <h2>{object.weather}</h2>
+      {/* <h2>{object.weather}</h2> */}
     </div>
   )
 }
