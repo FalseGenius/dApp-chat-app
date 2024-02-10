@@ -1,7 +1,6 @@
 'use client'
 
-import React, {useEffect} from 'react';
-import {useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {ChatAppContext} from '../context/ChatAppContext';
 
 interface Props {}
