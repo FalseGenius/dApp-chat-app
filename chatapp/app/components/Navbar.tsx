@@ -56,7 +56,7 @@ const Navbar = (props: Props) => {
         {/* Left */}
         <div className='p-8 md:pl-24 justify-normal md:justify-between'>
           <div className='w-14 rounded-md '>
-            <Image src={images.logo} alt='logo' width={50} height={50} />
+            <Image className='cursor-pointer' src={images.logo} alt='logo' width={50} height={50} />
           </div>
         </div>
 
@@ -65,7 +65,8 @@ const Navbar = (props: Props) => {
           {/* Desktop */}
           <div className='hidden md:flex md:space-x-4 lg:space-x-9 p-4'>
             {menuItems.map((el, i) => (
-              <div key={i+1} onClick={() => setActive(i+1)} className={`text-white text-sm md:text-md `}>
+              <div key={i+1} onClick={() => setActive(i+1)} className={`${active == i+1 ? "text-orange-400 underline underline-offset-8" : "text-white"}  text-sm md:text-md `}>
+                {/* <p >{el.menu}</p> */}
                 <Link href={el.link}>{el.menu}</Link>
               </div>
             ))}
@@ -73,9 +74,9 @@ const Navbar = (props: Props) => {
 
           {/* Mobile */}
           {open && 
-            (<div>
+            (<div className='z-10 h-screen absolute flex items-center top-12 justify-center flex-col space-y-5 text-center'>
             {menuItems.map((el, i) => (
-              <div key={i+1} onClick={() => setActive(i+1)} className={`text-white`}>
+              <div key={i+1} onClick={() => setActive(i+1)} className={`${active == i+1 ? "text-orange-400 underline underline-offset-8" : "text-white"}  text-sm `}>
                 <Link href={el.link}>{el.menu}</Link>
               </div>
             ))}
@@ -87,10 +88,10 @@ const Navbar = (props: Props) => {
 
         {/* cONNECT WALLET FUNCTION */}
           <div className='p-4'>
-            {object.account != '' ? (
-              <button onClick={() => connectWallet()}> 
+            {object.account == '' ? (
+              <button className='flex p-2 rounded-md w-36  items-center justify-center space-x-2 bg-slate-800' onClick={() => connectWallet()}> 
                 {""}
-                <span>Connect Wallet</span>
+                <span className='text-xs text-orange-400'>Connect Wallet</span>
               </button>
             ) : (
               <button onClick={() => setOpenModel(true)} className='flex p-3 rounded-md w-36  items-center justify-center space-x-2 bg-slate-800'>
@@ -101,8 +102,8 @@ const Navbar = (props: Props) => {
             )}
           </div>
           
-          <div className='p-4 w-14' onClick={() => setOpen(true)}>
-              <Image src={images.open} alt='open'  width={20} height={20}/>
+          <div className='md:hidden p-4 w-14' onClick={() => setOpen(true)}>
+              <Image className='cursor-pointer' src={images.open} alt='open'  width={20} height={20}/>
           </div>
         </div>
       </div>
