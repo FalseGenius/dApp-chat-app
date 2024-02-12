@@ -2,10 +2,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import images from '../assets';
-import {ChatAppContext} from '../context/ChatAppContext';
-import React, {useEffect, useState, useContext} from 'react';
 import Model from './Model';
 import Error from './Error';
+import {ChatAppContext} from '../context/ChatAppContext';
+import React, {useEffect, useState, useContext} from 'react';
 
 
 
@@ -121,7 +121,7 @@ const Navbar = (props: Props) => {
             info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at egestas ipsum, at fringilla leo.
             Nunc dignissim, nulla eget rhoncus malesuada, mauris metus vulputate arcu, id fermentum ex elit vitae tortor."
             smallInfo="Kindly select your name"
-            images={images.hero}
+            image={images.hero}
             functionName={createAccount}
           />
         </div>
