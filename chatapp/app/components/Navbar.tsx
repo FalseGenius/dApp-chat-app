@@ -113,16 +113,18 @@ const Navbar = (props: Props) => {
       </div>
 
       {/* Model Component */}
-      {openModel && (
+      {!openModel && (
         <div>
           <Model 
+            openBox={setOpenModel}
             title="Welcome To"
-            head="Chat Buddy"
+            head="CHAT BUDDY"
             info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at egestas ipsum, at fringilla leo.
             Nunc dignissim, nulla eget rhoncus malesuada, mauris metus vulputate arcu, id fermentum ex elit vitae tortor."
-            smallInfo="Kindly select your name"
+            smallInfo="Kindly select your name..."
             image={images.hero}
             functionName={createAccount}
+            address={object.account}
           />
         </div>
       )}
