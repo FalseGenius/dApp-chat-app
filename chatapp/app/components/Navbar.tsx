@@ -49,6 +49,12 @@ const Navbar = (props: Props) => {
   ]
 
 
+  const connect = () => {
+    const address = connectWallet();
+    if (address) {
+      setObject({...object, account:address});
+    } else throw new Error("An error occured! Please try again.");
+  }
 
   return (
     <div className='mt-12 relative'>
@@ -88,7 +94,7 @@ const Navbar = (props: Props) => {
           {/* CONNECT WALLET FUNCTION */}
           <div className='p-4'>
             {object.account === '' ? (
-              <button className='flex p-2 rounded-md w-36 items-center justify-center space-x-2 bg-slate-800' onClick={() => connectWallet()}>
+              <button className='flex p-2 rounded-md w-36 items-center justify-center space-x-2 bg-slate-800' onClick={connect}>
                 <span className='text-xs text-orange-400'>Connect Wallet</span>
               </button>
             ) : (

@@ -23,6 +23,7 @@ export const connectWallet = async () => {
             method:'eth_requestAccounts'
         });
 
+        console.log(accounts[0]);
         return accounts[0];
         
     } catch (error) {
@@ -31,7 +32,7 @@ export const connectWallet = async () => {
 }
 
 const fetchContract = async (signerOrProvider) => {
-    new ethers.Contract(chatAppAbi, chatAppAddress, signerOrProvider);
+    new ethers.Contract(chatAppAddress, chatAppAbi, signerOrProvider);
 }
 
 export const connectingWithContract = async () => {
