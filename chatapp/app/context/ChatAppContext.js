@@ -33,19 +33,20 @@ export const ChatAppProvider = ({children}) => {
 
     const fetchData = async () => {
         try {
-            const contract = await connectingWithContract();
+            // const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
-            const userName = await contract.getUsername(connectAccount);
-            const friendList = await contract.getFriends();
-            const userList = await contract.getAllAppUsers();
-            setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});         
+            // const userName = await contract.getUsername(connectAccount);
+            // const friendList = await contract.getFriends();
+            // const userList = await contract.getAllAppUsers();
+            // setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});         
+            setObject({...object, account:connectAccount});         
         } catch (error) {
             console.log("Please install and connect your wallet");
         }
     }
 
     useEffect(() => {
-        // fetchData();
+        fetchData();
     }, [])
 
     const readMessage = async (friendAddress) => {
@@ -120,7 +121,7 @@ export const ChatAppProvider = ({children}) => {
     
 
     return (
-        <ChatAppContext.Provider value={{object, setObject, connectWallet, connectingWithContract, readMessage, createAccount, addFriends, sendMessage, readUser}}>
+        <ChatAppContext.Provider value={{object, setObject, connectWallet, connectingWithContract, readMessage, createAccount, addFriends, sendMessage, readUser, error}}>
             {children}
         </ChatAppContext.Provider>
     )

@@ -4,16 +4,16 @@ import Image from 'next/image';
 import images from '../assets';
 import {ChatAppContext} from '../context/ChatAppContext';
 import React, {useEffect, useState, useContext} from 'react';
+import Model from './Model';
+import Error from './Error';
 
-
-// import {Model, Error} from 
 
 
 interface Props {}
 
 const Navbar = (props: Props) => {
 
-  const {object, setObject, connectWallet, connectingWithContract} = useContext<any>(ChatAppContext);
+  const {object, setObject, connectWallet, connectingWithContract, createAccount, error} = useContext<any>(ChatAppContext);
   const [active, setActive] = useState(2);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
@@ -49,11 +49,12 @@ const Navbar = (props: Props) => {
   ]
 
 
-  const connect = () => {
+
+
+  const connect = ():void => {
     const address = connectWallet();
-    if (address) {
-      setObject({...object, account:address});
-    } else throw new Error("An error occured! Please try again.");
+    if (address) setObject({...object, account:address});
+    else console.log("An error occured");
   }
 
   return (
@@ -110,6 +111,22 @@ const Navbar = (props: Props) => {
           </div>
         </div>
       </div>
+
+      {/* Model Component */}
+      {openModel && (
+        <div>
+          <Model 
+            title="Welcome To"
+            head="Chat Buddy"
+            info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at egestas ipsum, at fringilla leo.
+            Nunc dignissim, nulla eget rhoncus malesuada, mauris metus vulputate arcu, id fermentum ex elit vitae tortor."
+            smallInfo="Kindly select your name"
+            images={images.hero}
+            functionName={createAccount}
+          />
+        </div>
+      )}
+      {error == "" ? "" : <Error error={error} /> }
     </div>
   );
   

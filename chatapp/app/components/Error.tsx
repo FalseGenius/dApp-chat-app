@@ -1,6 +1,8 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  error:String;
+}
 
 export default function Error({}: Props) {
   return (
