@@ -25,26 +25,28 @@ const Model = (props: Props) => {
   return (
     <div className=''>
       {/* Model Box */}
-      <div className='flex flex-row items-center justify-between space-x-5 '>
+      <div className='flex flex-col md:flex-row items-center justify-between space-x-5 mx-4'>
 
         {/* Left */}
-        <div className='basis-1/2'>
-          <Image src={props.image} alt="Buddy" height={700} width={700} />
+        <div className='basis-1/2 w-3/4'>
+          <Image className='p-2 w-full object-contain' src={props.image} alt="Buddy" height={700} width={700} />
         </div>
 
         {/* Right */}
         <div className='basis-1/2 space-y-5'>
-          <h1 className='text-4xl text-orange-400 font-semibold tracking-wider'>
-            {props.title}
-            <br />
-            <span className='font-bold text-5xl'>{props.head}</span>
-          </h1>
-          <p className='w-4/5 pb-2'>{props.info}</p>
-          <small className='text-orange-400 text-md'>{props.smallInfo}</small>
+          <div className='space-y-5 flex flex-col justify-between md:text-left'>
+            <h1 className='text-xl md:text-2xl lg:text-4xl text-orange-400 font-semibold tracking-wider'>
+              {props.title}
+              <br />
+              <span className='text-2xl md:text-3xl lg:text-5xl font-bold'>{props.head}</span>
+            </h1>
+            <p className='text-lg md:text-sm lg:text-lg  w-11/12 pb-2'>{props.info}</p>
+            <small className='text-orange-400 text-md'>{props.smallInfo}</small>
+          </div>
 
         {/* Modex box right name */}
-          <div className='space-y-3'>
-            <div className='flex items-center space-x-2 bg-slate-900 w-4/5 p-2 rounded-md'>
+          <div className='space-y-3  w-11/12 flex flex-col items-left'>
+            <div className='flex items-center space-x-2 bg-slate-900 w-full p-2 rounded-md'>
               <Image src={images.username} alt="username" width={30} height={30} />
               <input
               
@@ -54,7 +56,7 @@ const Model = (props: Props) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className='flex items-center space-x-2 bg-slate-900 w-4/5 p-2 rounded-md'>
+            <div className='flex items-center space-x-2 bg-slate-900  p-2 rounded-md'>
               <Image src={images.account} alt="account" width={30} height={30} />
               <input
                 className='bg-slate-900 w-full outline-none'
@@ -63,7 +65,7 @@ const Model = (props: Props) => {
                 onChange={(e) => setAccountAddress(e.target.value)}
               />
             </div>
-            <div className='flex flex-row w-4/5 space-x-3'>
+            <div className='flex flex-row  space-x-3'>
               <button className='bg-slate-900 basis-1/2 p-2 rounded-md text-orange-400 items-center justify-center flex space-x-2 font-semibold' onClick={() => props.functionName({name, accountAddress})}>
                 {""}
                 <Image src={images.send} alt="send" width={30} height={30} />
