@@ -23,7 +23,7 @@ const Model = (props: Props) => {
   const {loading} = useContext<any>(ChatAppContext);
 
   return (
-    <div className=''>
+    <div className='overflow-y-hidden'>
       {/* Model Box */}
       <div className='flex flex-col md:flex-row items-center justify-between space-x-5 mx-4'>
 
@@ -44,7 +44,9 @@ const Model = (props: Props) => {
             <small className='text-orange-400 text-md'>{props.smallInfo}</small>
           </div>
 
-        {/* Modex box right name */}
+        {loading ? (
+          <Loader />
+        ) : (
           <div className='space-y-3  w-11/12 flex flex-col items-left'>
             <div className='flex items-center space-x-2 bg-slate-900 w-full p-2 rounded-md'>
               <Image src={images.username} alt="username" width={30} height={30} />
@@ -80,6 +82,10 @@ const Model = (props: Props) => {
               </button>
             </div>
           </div>
+        )
+
+        }
+        {/* Modex box right name */}
         </div>
       </div>
     </div>

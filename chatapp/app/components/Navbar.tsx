@@ -59,7 +59,7 @@ const Navbar = (props: Props) => {
 
   return (
     <div className='mt-12 relative'>
-      <div className='flex justify-between items-center'>
+      <div className={openModel ? `hidden` : `flex justify-between items-center`}>
         {/* Left */}
         <div className='p-8 md:pl-24 justify-normal md:justify-between'>
           <div className='w-14 rounded-md'>
@@ -113,8 +113,8 @@ const Navbar = (props: Props) => {
       </div>
 
       {/* Model Component */}
-      {!openModel && (
-        <div>
+      {openModel && (
+        <div className='absolute top-0'>
           <Model 
             openBox={setOpenModel}
             title="Welcome To"
