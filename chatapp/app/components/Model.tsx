@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import images from "../assets";
+import images from "../../public/assets";
 import Loader from './Loader';
 import React, {useState, useContext} from 'react';
 import {ChatAppContext} from '../context/ChatAppContext';
@@ -13,6 +13,7 @@ type Props = {
   functionName:any;
   address:String;
   openBox:any;
+  setErr:any;
 }
 
 const Model = (props: Props) => {
@@ -21,6 +22,11 @@ const Model = (props: Props) => {
   const [accountAddress, setAccountAddress] = useState("");
 
   const {loading} = useContext<any>(ChatAppContext);
+
+  const handleCancel = () => {
+    props.openBox(false);
+    props.setErr("");
+  }
 
   return (
     <div className='overflow-y-hidden'>
@@ -74,7 +80,7 @@ const Model = (props: Props) => {
                 {""}
                 <span>Submit</span>
               </button>
-              <button className='bg-slate-900 basis-1/2 p-2 rounded-md text-orange-400 items-center justify-center flex space-x-2 font-semibold' onClick={() => props.openBox(false)}>
+              <button className='bg-slate-900 basis-1/2 p-2 rounded-md text-orange-400 items-center justify-center flex space-x-2 font-semibold' onClick={handleCancel}>
                 {""}
                 <Image src={images.close} alt="close" width={30} height={30} />
                 {""}

@@ -79,7 +79,7 @@ export const ChatAppProvider = ({children}) => {
 
     const addFriends = async ({name, accountAddress}) => {
         try {
-            if (name || accountAddress) return setError("Name and account must be there");
+            // if (name || accountAddress) return setError("Name and account must be there");
             const contract = await connectingWithContract();
             const addFriend = await contract.addFriend(accountAddress, name);
             setLoading(true);
@@ -124,7 +124,7 @@ export const ChatAppProvider = ({children}) => {
     
 
     return (
-        <ChatAppContext.Provider value={{object, setObject, connectWallet, connectingWithContract, readMessage, createAccount, addFriends, sendMessage, readUser, error, loading}}>
+        <ChatAppContext.Provider value={{object, setObject, connectWallet, connectingWithContract, readMessage, createAccount, addFriends, sendMessage, readUser, error, setError,loading}}>
             {children}
         </ChatAppContext.Provider>
     )

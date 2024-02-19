@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import images from '../assets';
+import images from '../../public/assets';
 
 type Props = {}
 

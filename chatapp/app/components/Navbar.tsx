@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image';
-import images from '../assets';
+import images from '../../public/assets';
 import Model from './Model';
 import Error from './Error';
 import {ChatAppContext} from '../context/ChatAppContext';
@@ -13,7 +13,7 @@ interface Props {}
 
 const Navbar = (props: Props) => {
 
-  const {object, setObject, connectWallet, connectingWithContract, createAccount, error} = useContext<any>(ChatAppContext);
+  const {object, setObject, connectWallet, connectingWithContract, createAccount, error, setError} = useContext<any>(ChatAppContext);
   const [active, setActive] = useState(2);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
@@ -125,6 +125,7 @@ const Navbar = (props: Props) => {
             image={images.hero}
             functionName={createAccount}
             address={object.account}
+            setErr={setError}
           />
         </div>
       )}
