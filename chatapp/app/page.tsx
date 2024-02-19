@@ -1,14 +1,14 @@
 
 import Image from "next/image";
-import Homepage from './components/Homepage';
-import Error from './components/Error';
-import Navbar from "./components/Navbar";
+import Filter from './components/Filter';
+// import Model from './components/Model';
+
 
 
 export default function Home() {
   return (
     <div>
-      <h1>Hey there</h1>
+      <Filter />
     </div>
   );
 }

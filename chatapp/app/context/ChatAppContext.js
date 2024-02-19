@@ -35,10 +35,11 @@ export const ChatAppProvider = ({children}) => {
         try {
             const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
-            const userName = await contract.getUsername(connectAccount);
+            // const userName = await contract.getUsername(connectAccount);
             const friendList = await contract.getFriends();
             const userList = await contract.getAllAppUsers();
-            setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
+            // setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
+            setObject({...object, account:connectAccount, friendList:friendList, userList:userList});              
         } catch (error) {
             setError("Please install and connect your wallet");
             console.log(error.message);

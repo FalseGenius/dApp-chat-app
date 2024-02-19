@@ -29,7 +29,7 @@ const Model = (props: Props) => {
   }
 
   return (
-    <div className='overflow-y-hidden'>
+    <div className='overflow-y-hidden z-50'>
       {/* Model Box */}
       <div className='flex flex-col md:flex-row items-center justify-between space-x-5 mx-4'>
 

@@ -114,7 +114,7 @@ const Navbar = (props: Props) => {
 
       {/* Model Component */}
       {openModel && (
-        <div className='absolute top-0'>
+        <div className='absolute top-0 z-50 bg-[#292f3f]'>
           <Model 
             openBox={setOpenModel}
             title="Welcome To"
