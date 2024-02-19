@@ -32,20 +32,17 @@ export const ChatAppProvider = ({children}) => {
     // const router = useRouter();
 
     const fetchData = async () => {
-        // try {
+        try {
             const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
             const userName = await contract.getUsername(connectAccount);
-            console.log(userName);
-            // const friendList = await contract.getFriends();
-            // const userList = await contract.getAllAppUsers();
-            // console.log(userList);
-            // setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});         
-            if (connectAccount != null) setObject({...object, account:connectAccount, userName:userName});         
-        // } catch (error) {
-        //     setError("Please install and connect your wallet");
-        //     console.log(error.message);
-        // }
+            const friendList = await contract.getFriends();
+            const userList = await contract.getAllAppUsers();
+            setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
+        } catch (error) {
+            setError("Please install and connect your wallet");
+            console.log(error.message);
+        }
     }
 
     useEffect(() => {

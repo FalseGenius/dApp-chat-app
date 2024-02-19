@@ -23,11 +23,11 @@ const Navbar = (props: Props) => {
   const menuItems = [
     {
       menu:"All Users",
-      link:"users"
+      link:"allusers"
     },
     {
       menu:"CHAT",
-      link:"Chat"
+      link:"/"
     },
     {
       menu:"CONTACTS",

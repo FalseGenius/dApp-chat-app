@@ -8,8 +8,7 @@ import Navbar from "./components/Navbar";
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      {/* <Homepage />   */}
+      <h1>Hey there</h1>
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  el:any;
+  idx:Number;
+  addFriends:any;
+}
 
 const UserCard = (props: Props) => {
   return (
