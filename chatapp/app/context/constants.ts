@@ -1,176 +1,176 @@
-export const chatAppAddress:string = "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853";
+export const chatAppAddress:string = "0x7DaDab700A0DbCaCA03b44E2a9E6182cACD067c1";
 export const chatAppAbi:any = [
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "friend_key",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "name",
-          "type": "string"
-        }
-      ],
-      "name": "addFriend",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "pubKey",
-          "type": "address"
-        }
-      ],
-      "name": "checkUserExists",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "name",
-          "type": "string"
-        }
-      ],
-      "name": "createUser",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getAllAppUsers",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "string",
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "internalType": "address",
-              "name": "pubKey",
-              "type": "address"
-            }
-          ],
-          "internalType": "struct ChatApp.AllUserStruct[]",
-          "name": "",
-          "type": "tuple[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getFriends",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "address",
-              "name": "pubKey",
-              "type": "address"
-            },
-            {
-              "internalType": "string",
-              "name": "name",
-              "type": "string"
-            }
-          ],
-          "internalType": "struct ChatApp.Friend[]",
-          "name": "",
-          "type": "tuple[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "pubKey",
-          "type": "address"
-        }
-      ],
-      "name": "getUsername",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "friend_key",
-          "type": "address"
-        }
-      ],
-      "name": "readMessage",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "string",
-              "name": "msg",
-              "type": "string"
-            },
-            {
-              "internalType": "uint256",
-              "name": "timestamp",
-              "type": "uint256"
-            },
-            {
-              "internalType": "address",
-              "name": "sender",
-              "type": "address"
-            }
-          ],
-          "internalType": "struct ChatApp.Message[]",
-          "name": "",
-          "type": "tuple[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "friend_key",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_msg",
-          "type": "string"
-        }
-      ],
-      "name": "sendMessage",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "friend_key",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "name": "addFriend",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pubKey",
+        "type": "address"
+      }
+    ],
+    "name": "checkUserExists",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      }
+    ],
+    "name": "createUser",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllAppUsers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "pubKey",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct ChatApp.AllUserStruct[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getFriends",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "pubKey",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct ChatApp.Friend[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pubKey",
+        "type": "address"
+      }
+    ],
+    "name": "getUsername",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "friend_key",
+        "type": "address"
+      }
+    ],
+    "name": "readMessage",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "msg",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct ChatApp.Message[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "friend_key",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_msg",
+        "type": "string"
+      }
+    ],
+    "name": "sendMessage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

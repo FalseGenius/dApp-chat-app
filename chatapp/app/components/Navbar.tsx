@@ -87,7 +87,7 @@ const Navbar = (props: Props) => {
                 </div>
               ))}
               <p>
-                <Image src={images.close} alt='close' width={50} height={50} onClick={() => setOpen(false)} />
+                <Image src={images.close} className='cursor-pointer' alt='close' width={50} height={50} onClick={() => setOpen(false)} />
               </p>
             </div>
           )}

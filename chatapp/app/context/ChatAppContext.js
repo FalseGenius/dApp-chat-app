@@ -17,7 +17,7 @@ export const ChatAppContext = React.createContext(null);
 export const ChatAppProvider = ({children}) => {
     
     const [object, setObject] = useState({
-        account:'',
+        account:'' | null,
         userName:"",
         friendList:[],
         friendMsg:[],
@@ -32,17 +32,20 @@ export const ChatAppProvider = ({children}) => {
     // const router = useRouter();
 
     const fetchData = async () => {
-        try {
-            // const contract = await connectingWithContract();
+        // try {
+            const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
-            // const userName = await contract.getUsername(connectAccount);
+            const userName = await contract.getUsername(connectAccount);
+            console.log(userName);
             // const friendList = await contract.getFriends();
             // const userList = await contract.getAllAppUsers();
+            // console.log(userList);
             // setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});         
-            setObject({...object, account:connectAccount});         
-        } catch (error) {
-            console.log("Please install and connect your wallet");
-        }
+            if (connectAccount != null) setObject({...object, account:connectAccount, userName:userName});         
+        // } catch (error) {
+        //     setError("Please install and connect your wallet");
+        //     console.log(error.message);
+        // }
     }
 
     useEffect(() => {
@@ -62,12 +65,15 @@ export const ChatAppProvider = ({children}) => {
 
     const createAccount = async ({name, accountAddress}) => {
         try {
-            if (name || accountAddress) return setError("Name and account must be there");
+            // if (name || accountAddress) return setError("Name and account must be there");
+            // const accountAddress = object.account;
             const contract = await connectingWithContract();
+            console.log(contract);
             const getCreatedUser = await contract.createUser(name);
             setLoading(true);
             await getCreatedUser.wait();
             setLoading(false);
+            window.location.reload();
         } catch (error) {
             setError("Error while creating the account");
             console.log(error);
