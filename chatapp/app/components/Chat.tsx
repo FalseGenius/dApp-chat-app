@@ -36,9 +36,9 @@ const Chat = (props: Props) => {
 
   }, [searchParams])
   return (
-    <div className='bg-slate-800 rounded-md'>
+    <div className='bg-slate-800 rounded-md '>
       {chatData.name.length != 0 && chatData.address.length != 0 ? (
-        <div className='flex flex-col justify-between h-screen p-3 overflow-y-auto '>
+        <div className='flex flex-col justify-between h-[70vh] p-3 overflow-y-auto '>
           {props.currentUserName && props.currentUserAddress ? (
             <div className='p-4 flex items-center space-x-4'>
               <Image src={"/assets/acountName.png"} alt='accountName' width={70} height={70} />

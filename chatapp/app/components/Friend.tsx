@@ -16,7 +16,7 @@ const Friend = (props: Props) => {
       <div className='flex flex-col md:flex-row items-center'>
 
         {/* Left */}
-        <div className='flex-1 w-full md:flex-1/2 md:w-1/2 lg:flex-1/3  lg:w-2/5  rounded-md bg-slate-800 h-screen'>
+        <div className='w-full overflow-y-scroll md:h-[70vh] md:w-1/2 lg:w-2/6 rounded-md bg-slate-800'>
           {object.friendList.map((el:any, idx:number) => (
             <FriendCard
               key={idx+1}
@@ -30,7 +30,7 @@ const Friend = (props: Props) => {
         </div>
 
         {/* Right */}
-        <div className='flex-1 w-full mt-8 md:mt-0 md:flex-1/2 md:w-1/2 lg:flex-2/3 lg:w-3/5 md:ml-6 h-screen'>
+        <div className='w-full h-[70vh] md:w-1/2 lg:w-4/6 mt-8 md:mt-0  md:ml-6'>
             <Chat 
               functionName={sendMessage}  
               readMessage={readMessage} 

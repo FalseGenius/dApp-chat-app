@@ -11,7 +11,7 @@ const Filter = (props: Props) => {
   const {object, error, setError,addFriends} = useContext<any>(ChatAppContext);
   const [addFriend, setAddFriend] = useState(false);
   return (
-    <div className='ml-8 mr-8 md:ml-12 md:mr-12 mt-12'>
+    <div className='ml-8 mr-8 md:ml-12 md:mr-12 mt-4'>
 
       <div className='flex flex-col md:flex-row space-y-4 md:space-y-0 items-center content-center justify-between'>
         {/* Left */}

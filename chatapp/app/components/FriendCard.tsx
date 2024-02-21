@@ -26,7 +26,7 @@ const FriendCard = (props: Props) => {
             <div className='flex flex-1 justify-between'>
               <div>
                 <h4>{props.el.name}</h4>
-                <p>{props.el.pubKey.slice(0, 18)}...</p>
+                <p>{props.el.pubKey.slice(0, 15)}...</p>
               </div>
               <div>
                 <small>{props.idx+1}</small>

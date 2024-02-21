@@ -97,7 +97,7 @@ export const ChatAppProvider = ({children}) => {
 
     const sendMessage = async (msg, accountAddress) => {
         try {
-            if (msg || accountAddress) return setError("Name and account must be there");
+            // if (msg || accountAddress) return setError("Name and account must be there");
             const contract = await connectingWithContract();
             const sentMessage = await contract.sendMessage(accountAddress, msg);
             setLoading(true);
