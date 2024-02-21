@@ -92,7 +92,9 @@ contract ChatApp {
         allMessages[chatID].push(newMsg);
     }
 
-    function readMessage(address friend_key) exists(msg.sender, friend_key) external view returns (Message[] memory) {
+    function readMessage(address friend_key) external view returns (Message[] memory) {
+        require(checkUserExists(msg.sender), "Create an account first before adding friends");
+        require(checkUserExists(friend_key), "Friend needs to register first");
         bytes32 id = _getChatID(msg.sender, friend_key);
         return allMessages[id];
     }
