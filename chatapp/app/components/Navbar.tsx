@@ -13,7 +13,7 @@ interface Props {}
 
 const Navbar = (props: Props) => {
 
-  const {object, setObject, connectWallet, connectingWithContract, createAccount, error, setError} = useContext<any>(ChatAppContext);
+  const {object, setObject, connectWallet, createAccount, error, setError} = useContext<any>(ChatAppContext);
   const [active, setActive] = useState(2);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);

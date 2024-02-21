@@ -1,6 +1,6 @@
 'use client'
+import { redirect } from 'next/navigation'
 import React, {useState, useEffect} from 'react';
-import { useRouter } from 'next/router';
 import {checkIfWalletIsConnected, connectWallet, connectingWithContract} from '../Utils/apiFeature';
 
 
@@ -53,7 +53,7 @@ export const ChatAppProvider = ({children}) => {
     const readMessage = async (friendAddress) => {
         try {
             const contract = await connectingWithContract();
-            const messages = await contract.reads(friendAddress);
+            const messages = await contract.readMessage(friendAddress);
             setObject({...object, friendMsg:messages});
         } catch (error) {
             // setError("Currently, you have no messages");
@@ -71,7 +71,7 @@ export const ChatAppProvider = ({children}) => {
             setLoading(true);
             await getCreatedUser.wait();
             setLoading(false);
-            window.location.reload();
+            redirect('/');
         } catch (error) {
             setError("Error while creating the account");
             console.log(error);
@@ -95,7 +95,7 @@ export const ChatAppProvider = ({children}) => {
         }
     }
 
-    const sendMessage = async ({msg, accountAddress}) => {
+    const sendMessage = async (msg, accountAddress) => {
         try {
             if (msg || accountAddress) return setError("Name and account must be there");
             const contract = await connectingWithContract();

@@ -11,7 +11,6 @@ type Props = {}
 const Friend = (props: Props) => {
   const array  = [1, 2, 3, 4, 5, 6];
   const {object, sendMessage, readMessage, loading, readUser} = useContext<any>(ChatAppContext);
-  console.log(object.friendList)
   return (
     <div>
       <div className='flex items-center m-12'>
@@ -40,6 +39,7 @@ const Friend = (props: Props) => {
               userName={object.userName}
               currentUserName={object.currentUserName}
               currentUserAddress={object.currentUserAddress}
+              loading={loading}
                 />
         </div>
 
