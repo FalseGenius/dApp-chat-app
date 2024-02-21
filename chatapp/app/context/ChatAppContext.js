@@ -71,7 +71,7 @@ export const ChatAppProvider = ({children}) => {
             setLoading(true);
             await getCreatedUser.wait();
             setLoading(false);
-            redirect('/');
+            window.location.reload();
         } catch (error) {
             setError("Error while creating the account");
             console.log(error);
@@ -87,7 +87,7 @@ export const ChatAppProvider = ({children}) => {
             await addFriend.wait();
             setLoading(false);
             // router.push('/');
-            window.location.reload();
+            redirect('/');
             
         } catch (error) {
             setError("Something went wrong while adding friend");

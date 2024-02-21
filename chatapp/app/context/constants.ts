@@ -1,4 +1,4 @@
-export const chatAppAddress:string = "0x7DaDab700A0DbCaCA03b44E2a9E6182cACD067c1";
+export const chatAppAddress:string = "0x383096D8F62b8F461afB85867a6567b71070fc10";
 export const chatAppAbi:any = [
   {
     "inputs": [
