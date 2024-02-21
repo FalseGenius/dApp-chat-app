@@ -12,7 +12,7 @@ type Props = {
 
 const UserCard = (props: Props) => { 
   const imagePath:any = `/assets/img${props.idx}.gif`;
-  console.log(props.el);
+
   return (
     <div className='relative bg-slate-800 flex flex-col items-center justify-center rounded-md shadow-2xl shadow-zinc-600 hover:shadow-zinc-500'>
       <div className='flex flex-col items-center text-center p-4'>

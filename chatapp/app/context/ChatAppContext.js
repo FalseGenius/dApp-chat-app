@@ -35,11 +35,11 @@ export const ChatAppProvider = ({children}) => {
         try {
             const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
-            // const userName = await contract.getUsername(connectAccount);
+            const userName = await contract.getUsername(connectAccount);
             const friendList = await contract.getFriends();
             const userList = await contract.getAllAppUsers();
-            // setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
-            setObject({...object, account:connectAccount, friendList:friendList, userList:userList});              
+            setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
+            // setObject({...object, account:connectAccount, friendList:friendList, userList:userList});              
         } catch (error) {
             setError("Please install and connect your wallet");
             console.log(error.message);
@@ -56,7 +56,7 @@ export const ChatAppProvider = ({children}) => {
             const messages = await contract.reads(friendAddress);
             setObject({...object, friendMsg:messages});
         } catch (error) {
-            setError("Currently, you have no messages");
+            // setError("Currently, you have no messages");
             console.log("Currently, you have no messages")
         }
     }
@@ -78,7 +78,7 @@ export const ChatAppProvider = ({children}) => {
         }
     }
 
-    const addFriends = async ({name, accountAddress}) => {
+    const addFriends = async (name, accountAddress) => {
         try {
             // if (name || accountAddress) return setError("Name and account must be there");
             const contract = await connectingWithContract();
@@ -118,7 +118,7 @@ export const ChatAppProvider = ({children}) => {
             setObject({...object, currentUserName:username, currentUserAddress:accountAddress});
 
         } catch (error) {
-            setError("Please reload and try again");
+            // setError("Please reload and try again");
             console.log(error);
         }
     }
