@@ -1,8 +1,9 @@
 'use client'
 import Chat from './Chat'
 import FriendCard from './FriendCard'
+import Loader from './Loader';
 import Image from 'next/image'
-import React, {useState, useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 
 import { ChatAppContext } from '../context/ChatAppContext';
 
@@ -42,7 +43,6 @@ const Friend = (props: Props) => {
               readUser={readUser}
                 />
         </div>
-
       </div>
     </div>
   )

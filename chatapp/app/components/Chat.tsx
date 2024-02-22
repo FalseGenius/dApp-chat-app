@@ -35,6 +35,7 @@ const Chat = (props: Props) => {
     if (noParams()) return;
     setChatData({name:searchParams.get("name")!, address:searchParams.get("address")!});
     props.readMessage(searchParams.get("address"));
+    
 
   }, [searchParams])
 
@@ -42,16 +43,35 @@ const Chat = (props: Props) => {
   useEffect(() => {
     const chatContainer = document.getElementById('chatContainer');
     if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-      chatContainer.classList.add("opacity-100", "scale-100");
+      const scrollHeight = chatContainer.scrollHeight;
+      const currentScrollTop = chatContainer.scrollTop;
+      const targetScrollTop = scrollHeight;
+      const duration = 500; // Adjust the duration as needed (in milliseconds)
+    
+      const startTime = performance.now();
+    
+      const animateScroll = (currentTime:any) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        chatContainer.scrollTop = currentScrollTop + progress * (targetScrollTop - currentScrollTop);
+    
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+    
+      requestAnimationFrame(animateScroll);
 
     }
   }, [searchParams, props.friendMsg])
 
+
   return (
     <div className='bg-slate-800 rounded-md relative'>
-      {chatData.name.length != 0 && chatData.address.length != 0 ? (
-        <div className='flex flex-col h-[70vh] p-3 '>
+      
+        {chatData.name.length != 0 && chatData.address.length != 0 ? (
+          <div className='flex flex-col h-[70vh] p-3 '>
           {props.currentUserName && props.currentUserAddress ? (
             <div className='p-4 flex items-center space-x-4'>
               <Image src={"/assets/acountName.png"} alt='accountName' width={70} height={70} />
@@ -67,7 +87,7 @@ const Chat = (props: Props) => {
             <div>
 
               {/* Left */}
-              <div id='chatContainer' className=' h-[45vh] overflow-y-scroll flex-col transition-opacity duration-300 ease-in-out opacity-0 scale-95'>
+              <div id='chatContainer' className=' h-[45vh] overflow-y-scroll flex-col  transition-opacity duration-300 ease-in-out opacity-0 scale-95'>
                 {props.friendMsg.map((el:any, idx:number) => (
                   <div className={`mr-8 ml-8  p-4 flex flex-col ${el.sender != chatData.address ? "items-end" : "items-start"}`} key={idx+1}>
         
@@ -113,6 +133,8 @@ const Chat = (props: Props) => {
         </div>
       ) : ("")
       }
+
+      
     </div>
   )
 }
