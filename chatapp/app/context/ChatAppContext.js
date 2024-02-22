@@ -106,7 +106,7 @@ export const ChatAppProvider = ({children}) => {
             window.location.href = "/";
             
         } catch (error) {
-            setError("Something went wrong while adding friend");
+            // setError("Something went wrong while adding friend");
             console.log(error);
         }
     }
@@ -122,7 +122,7 @@ export const ChatAppProvider = ({children}) => {
             // window.location.reload();
             readMessage(accountAddress);
         } catch (error) {
-            setError("Please reload and try again");
+            // setError("Please reload and try again");
             console.log(error);
         }
     }
