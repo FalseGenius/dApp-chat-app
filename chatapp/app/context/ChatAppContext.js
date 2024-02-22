@@ -20,6 +20,7 @@ export const ChatAppProvider = ({children}) => {
         account:'' | null,
         userName:"",
         friendList:[],
+        friendAddresses:{},
         friendMsg:[],
         userList:[],
         currentUserName:"",
@@ -31,6 +32,7 @@ export const ChatAppProvider = ({children}) => {
 
     // const router = useRouter();
 
+
     const fetchData = async () => {
         try {
             const contract = await connectingWithContract();
@@ -38,7 +40,8 @@ export const ChatAppProvider = ({children}) => {
             const userName = await contract.getUsername(connectAccount);
             const friendList = await contract.getFriends();
             const userList = await contract.getAllAppUsers();
-            setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
+            const friendAddresses = captureFriendAddresses(friendList);
+            setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList, friendAddresses:friendAddresses});              
             // setObject({...object, account:connectAccount, friendList:friendList, userList:userList});              
         } catch (error) {
             // setError("Please install and connect your wallet");
@@ -49,6 +52,15 @@ export const ChatAppProvider = ({children}) => {
     useEffect(() => {
         if (object.account.length == null || object.account.length == 0) fetchData();
     }, [])
+
+    const captureFriendAddresses = (friendList) => {
+        let addresses = {};
+        for (const friend of friendList) {
+            addresses[friend.pubKey] = true;
+        }
+
+        return addresses;
+    }
 
     const readMessage = async (friendAddress) => {
         try {
@@ -107,7 +119,8 @@ export const ChatAppProvider = ({children}) => {
             setLoading(true);
             await sentMessage.wait();
             setLoading(false);
-            window.location.reload();
+            // window.location.reload();
+            readMessage(accountAddress);
         } catch (error) {
             setError("Please reload and try again");
             console.log(error);

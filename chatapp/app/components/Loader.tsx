@@ -8,7 +8,7 @@ const Loader = (props: Props) => {
   return (
     <div>
       <div>
-        <Image src={images.loader} alt='loader' width={100} height={100} />
+        <Image src={images.loader} alt='loader' width={50} height={50} />
       </div>
     </div>
   )

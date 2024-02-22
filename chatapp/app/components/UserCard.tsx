@@ -8,6 +8,7 @@ type Props = {
   el:any;
   idx:number;
   addFriends:any;
+  friendAddresses:Record<string, boolean>;
 }
 
 const UserCard = (props: Props) => { 
@@ -22,8 +23,8 @@ const UserCard = (props: Props) => {
           <p className='text-sm md:text-md'>{props.el.pubKey.slice(0,20)}...</p>
         </div>
       </div>
-      <button className='flex p-3 rounded-md w-36 items-center justify-center space-x-2 bg-slate-900 m-2' onClick={() => props.addFriends(props.el.name, props.el.pubKey)}>
-        <small className='text-xs text-orange-400'>Add friend</small>
+      <button disabled={props.friendAddresses && props.el.pubKey in props.friendAddresses} className='flex p-3 rounded-md w-36 items-center justify-center space-x-2 bg-slate-900 m-2' onClick={() => props.addFriends(props.el.name, props.el.pubKey)}>
+        <small className='text-xs text-orange-400'>{props.el.pubKey in props.friendAddresses ? "Already friends!": "Add friend"}</small>
       </button>
       <span className='absolute top-5 right-5 p-2 w-10 flex items-center justify-center bg-orange-400 rounded-full'>{props.idx}</span>
     </div>

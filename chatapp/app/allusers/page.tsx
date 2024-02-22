@@ -15,7 +15,7 @@ const allusers = (props: Props) => {
         </div>
         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-5 md:mx-20 mt-10'>
             {object.userList.map((el:any, idx:number) => (
-                <UserCard key={idx + 1} el={el} idx={idx+1}  addFriends={addFriends} />
+                <UserCard key={idx + 1} el={el} idx={idx+1}  addFriends={addFriends} friendAddresses={object.friendAddresses}/>
             ))}
         </div>
     </div>

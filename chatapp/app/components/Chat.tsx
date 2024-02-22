@@ -37,6 +37,17 @@ const Chat = (props: Props) => {
     props.readMessage(searchParams.get("address"));
 
   }, [searchParams])
+
+
+  useEffect(() => {
+    const chatContainer = document.getElementById('chatContainer');
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      chatContainer.classList.add("opacity-100", "scale-100");
+
+    }
+  }, [searchParams, props.friendMsg])
+
   return (
     <div className='bg-slate-800 rounded-md relative'>
       {chatData.name.length != 0 && chatData.address.length != 0 ? (
@@ -56,8 +67,7 @@ const Chat = (props: Props) => {
             <div>
 
               {/* Left */}
-              <div className=' h-[45vh] overflow-y-scroll'>
-              {/* <div className='border border-lime-50 overflow-y-scroll'> */}
+              <div id='chatContainer' className=' h-[45vh] overflow-y-scroll flex-col transition-opacity duration-300 ease-in-out opacity-0 scale-95'>
                 {props.friendMsg.map((el:any, idx:number) => (
                   <div className={`mr-8 ml-8  p-4 flex flex-col ${el.sender != chatData.address ? "items-end" : "items-start"}`} key={idx+1}>
         

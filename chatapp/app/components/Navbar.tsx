@@ -57,9 +57,9 @@ const Navbar = (props: Props) => {
       <div className={openModel ? `hidden` : `flex justify-between items-center`}>
         {/* Left */}
         <div className='p-8 md:pl-24 justify-normal md:justify-between'>
-          <div className='w-14 rounded-md'>
+          <Link href='/' onClick={() => setActive(1)} className='w-14 rounded-md'>
             <Image className='cursor-pointer' src={images.logo} alt='logo' width={50} height={50} />
-          </div>
+          </Link>
         </div>
   
         {/* Right */}
