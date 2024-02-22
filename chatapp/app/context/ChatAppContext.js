@@ -41,7 +41,7 @@ export const ChatAppProvider = ({children}) => {
             setObject({...object, account:connectAccount, userName:userName, friendList:friendList, userList:userList});              
             // setObject({...object, account:connectAccount, friendList:friendList, userList:userList});              
         } catch (error) {
-            setError("Please install and connect your wallet");
+            // setError("Please install and connect your wallet");
             console.log(error.message);
         }
     }

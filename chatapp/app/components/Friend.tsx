@@ -39,6 +39,7 @@ const Friend = (props: Props) => {
               currentUserName={object.currentUserName}
               currentUserAddress={object.currentUserAddress}
               loading={loading}
+              readUser={readUser}
                 />
         </div>
 
