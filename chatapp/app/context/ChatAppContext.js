@@ -47,14 +47,18 @@ export const ChatAppProvider = ({children}) => {
     }
 
     useEffect(() => {
-        fetchData();
+        if (object.account.length == null || object.account.length == 0) fetchData();
     }, [])
 
     const readMessage = async (friendAddress) => {
         try {
             const contract = await connectingWithContract();
             const messages = await contract.readMessage(friendAddress);
-            setObject({...object, friendMsg:messages});
+            // setObject({...object, friendMsg:messages});
+            setObject((prevObject) => ({
+                ...prevObject,
+                friendMsg:messages
+            }))
         } catch (error) {
             // setError("Currently, you have no messages");
             console.log("Currently, you have no messages")
@@ -115,8 +119,12 @@ export const ChatAppProvider = ({children}) => {
             
             const contract = await connectingWithContract();
             const username = await contract.getUsername(accountAddress);
-            setObject({...object, currentUserName:username, currentUserAddress:accountAddress});
-
+            // setObject({...object, currentUserName:username, currentUserAddress:accountAddress});
+            setObject((prevObject) => ({
+                ...prevObject,
+                currentUserName:username,
+                currentUserAddress:accountAddress
+            }))
         } catch (error) {
             // setError("Please reload and try again");
             console.log(error);

@@ -1,14 +1,14 @@
 "use client"
 import Image from 'next/image';
 import Model from './Model';
-import React, {useEffect, useState, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import { ChatAppContext } from '../context/ChatAppContext';
 
 
 type Props = {}
 
 const Filter = (props: Props) => {
-  const {object, error, setError,addFriends} = useContext<any>(ChatAppContext);
+  const {setError,addFriends} = useContext<any>(ChatAppContext);
   const [addFriend, setAddFriend] = useState(false);
   return (
     <div className='ml-8 mr-8 md:ml-12 md:mr-12 mt-4'>

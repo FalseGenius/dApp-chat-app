@@ -9,7 +9,6 @@ import { ChatAppContext } from '../context/ChatAppContext';
 type Props = {}
 
 const Friend = (props: Props) => {
-  const array  = [1, 2, 3, 4, 5, 6];
   const {object, sendMessage, readMessage, loading, readUser} = useContext<any>(ChatAppContext);
   return (
     <div className=' mr-12 ml-12 mb-12 mt-6'>

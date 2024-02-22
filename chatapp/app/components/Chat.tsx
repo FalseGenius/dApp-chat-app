@@ -24,7 +24,6 @@ const Chat = (props: Props) => {
     address:""
   })
 
-  console.log(props.friendMsg);
   const searchParams = useSearchParams();
 
   const noParams = () => {
@@ -78,13 +77,13 @@ const Chat = (props: Props) => {
                           </small>
                         </span>
                       </div>
-                    )
-                  }
-                  <p key={idx+1}>
-                    {el.msg}
-                    {""}
-                    {""}
-                  </p>
+                      )
+                    }
+                    <p key={idx+1}>
+                      {el.msg}
+                      {""}
+                      {""}
+                    </p>
                   </div>
                 ))}
               </div>

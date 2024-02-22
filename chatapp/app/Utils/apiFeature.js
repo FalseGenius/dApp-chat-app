@@ -26,13 +26,11 @@ export const connectWallet = async () => {
 
         // Check if MetaMask is already processing a request
         if (window.ethereum._metamask && window.ethereum._metamask.isUnlocked()) {
-            console.log("User is already connected");
             const accounts = await window.ethereum.request({
                 method: 'eth_accounts'
             });
             
             if (accounts && accounts.length > 0) {
-                console.log("Returning already connected account:", accounts[0]);
                 return accounts[0];  // Return the connected account
             }
             
