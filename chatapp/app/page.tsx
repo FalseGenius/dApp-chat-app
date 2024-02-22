@@ -9,7 +9,7 @@ import Friend from "./components/Friend";
 export default function Home() {
   return (
     <div>
-      <Filter />
+      {/* <Filter /> */}
       <Friend />
     </div>
   );

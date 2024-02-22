@@ -15,7 +15,7 @@ const Friend = (props: Props) => {
       <div className='flex flex-col md:flex-row items-center'>
 
         {/* Left */}
-        <div className='w-full overflow-y-scroll md:h-[70vh] md:w-1/2 lg:w-2/6 rounded-md bg-slate-800'>
+        <div className='w-full overflow-y-scroll h-[50vh] md:h-[70vh] md:w-1/2 lg:w-2/6 rounded-md bg-slate-800'>
           {object.friendList.map((el:any, idx:number) => (
             <FriendCard
               key={idx+1}

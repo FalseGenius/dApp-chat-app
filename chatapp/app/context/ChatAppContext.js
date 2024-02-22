@@ -91,7 +91,7 @@ export const ChatAppProvider = ({children}) => {
             await addFriend.wait();
             setLoading(false);
             // router.push('/');
-            redirect('/');
+            window.location.href = "/";
             
         } catch (error) {
             setError("Something went wrong while adding friend");

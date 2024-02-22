@@ -4,6 +4,7 @@ import Image from 'next/image';
 import images from '../../public/assets';
 import Model from './Model';
 import Error from './Error';
+import { usePathname } from 'next/navigation'
 import {ChatAppContext} from '../context/ChatAppContext';
 import React, {useEffect, useState, useContext} from 'react';
 
@@ -14,10 +15,12 @@ interface Props {}
 const Navbar = (props: Props) => {
 
   const {object, setObject, connectWallet, createAccount, error, setError} = useContext<any>(ChatAppContext);
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState<number | null>(null);
   const [open, setOpen] = useState(false);
   const [openModel, setOpenModel] = useState(false);
 
+
+  const pathName = usePathname();
 
 
   const menuItems = [
@@ -29,25 +32,17 @@ const Navbar = (props: Props) => {
       menu:"CHAT",
       link:"/"
     },
-    {
-      menu:"CONTACTS",
-      link:"contacts"
-    },
-    {
-      menu:"SETTINGS",
-      link:"settings"
-    },
-    {
-      menu:"FAQS",
-      link:"FAQS"
-    },
-    {
-      menu:"TERMS OF USE",
-      link:"all user"
-    },
 
   ]
 
+
+
+  useEffect(() => {
+    console.log(active);
+    console.log(pathName);
+    if (pathName == '/') setActive(1);
+    else setActive(0);
+  }, [])
 
 
 
@@ -72,7 +67,7 @@ const Navbar = (props: Props) => {
           {/* Desktop */}
           <div className='hidden md:flex md:space-x-4 lg:space-x-9 p-4'>
             {menuItems.map((el, i) => (
-              <div key={i + 1} onClick={() => setActive(i + 1)} className={`${active === i + 1 ? "text-orange-400 underline underline-offset-8" : "text-white"} text-sm md:text-md`}>
+              <div key={i} onClick={() => setActive(i)} className={`${active === i ? "text-orange-400 underline underline-offset-8" : "text-white"} text-sm md:text-md`}>
                 <Link href={el.link}>{el.menu}</Link>
               </div>
             ))}
@@ -82,7 +77,7 @@ const Navbar = (props: Props) => {
           {open && (
             <div className='md:hidden z-20 bg-slate-800 fixed inset-0 h-screen flex items-center justify-center flex-col space-y-6 text-center'>
               {menuItems.map((el, i) => (
-                <div key={i + 1} onClick={() => setActive(i + 1)} className={`${active === i + 1 ? "text-orange-400 underline underline-offset-8" : "text-white"} text-sm`}>
+                <div key={i} onClick={() => setActive(i)} className={`${active === i ? "text-orange-400 underline underline-offset-8" : "text-white"} text-sm`}>
                   <Link href={el.link}>{el.menu}</Link>
                 </div>
               ))}

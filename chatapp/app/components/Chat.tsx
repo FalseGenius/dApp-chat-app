@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image';
 import Loader from './Loader';
-import React, {useEffect, useState} from 'react'
-import { useSearchParams } from 'next/navigation'
+import React, {useEffect, useState} from 'react';
+import { useSearchParams } from 'next/navigation';
 import { convertTime } from '../Utils/apiFeature';
 
 type Props = {
@@ -63,7 +63,7 @@ const Chat = (props: Props) => {
         
                     <div className='flex space-x-1 items-right'>
                       <Image src={"/assets/acountName.png"} alt='image' width={50} height={50} />
-                      <span className='flex items-center justify-center space-x-2'>
+                      <span className='flex items-center justify-center space-x-2 text-sm md:text-base'>
                         <h4 className='text-sm md:text-base'>{el.sender == chatData.address ? chatData.name : props.userName}</h4> {""}
                         <small>
                           Time: {convertTime(el.timestamp)}
