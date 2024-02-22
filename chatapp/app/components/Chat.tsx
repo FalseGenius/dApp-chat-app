@@ -45,6 +45,7 @@ const Chat = (props: Props) => {
     if (chatContainer) {
       const scrollHeight = chatContainer.scrollHeight;
       const currentScrollTop = chatContainer.scrollTop;
+      chatContainer.classList.add("opacity-100", "scale-100");
       const targetScrollTop = scrollHeight;
       const duration = 500; // Adjust the duration as needed (in milliseconds)
     
