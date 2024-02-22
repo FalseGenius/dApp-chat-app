@@ -36,9 +36,9 @@ const Chat = (props: Props) => {
 
   }, [searchParams])
   return (
-    <div className='bg-slate-800 rounded-md '>
+    <div className='bg-slate-800 rounded-md relative'>
       {chatData.name.length != 0 && chatData.address.length != 0 ? (
-        <div className='flex flex-col justify-between h-[70vh] p-3 overflow-y-auto '>
+        <div className='flex flex-col h-[70vh] p-3 '>
           {props.currentUserName && props.currentUserAddress ? (
             <div className='p-4 flex items-center space-x-4'>
               <Image src={"/assets/acountName.png"} alt='accountName' width={70} height={70} />
@@ -54,13 +54,14 @@ const Chat = (props: Props) => {
             <div>
 
               {/* Left */}
-              <div>
+              <div className=' h-[45vh] overflow-y-scroll'>
+              {/* <div className='border border-lime-50 overflow-y-scroll'> */}
                 {props.friendMsg.map((el:any, idx:number) => (
-                  <div key={idx+1}>
+                  <div className='p-4' key={idx+1}>
                     {el.sender == chatData.address ? (
-                      <div>
+                      <div className='flex space-x-1'>
                         <Image src={"/assets/acountName.png"} alt='image' width={50} height={50} />
-                        <span>
+                        <span className='flex items-center justify-center space-x-2'>
                           <h4>{chatData.name}</h4> {""}
                           <small>
                             Time: {convertTime(el.timestamp)}
@@ -68,9 +69,9 @@ const Chat = (props: Props) => {
                         </span>
                       </div>
                     ) : (
-                      <div>
+                      <div className='flex space-x-1'>
                         <Image src={"/assets/acountName.png"} alt='image' width={50} height={50} />
-                        <span>
+                        <span className='flex items-center justify-center space-x-2'>
                           <h4>{props.userName}</h4> {""}
                           <small>
                             Time: {convertTime(el.timestamp)}
@@ -79,7 +80,7 @@ const Chat = (props: Props) => {
                       </div>
                       )
                     }
-                    <p key={idx+1}>
+                    <p className='bg-[#f182035b] rounded-md max-w-fit p-3 mt-2' key={idx+1}>
                       {el.msg}
                       {""}
                       {""}
@@ -87,16 +88,11 @@ const Chat = (props: Props) => {
                   </div>
                 ))}
               </div>
-            
-              {/* Right  */}
-              <div>
-
-              </div>
 
             </div>
             {props.currentUserAddress && props.currentUserName ? (
-              <div className=''>
-                <div className='flex h-10 space-x-2 mb-4 ml-4 mr-4'>
+              <div className='absolute bottom-1 w-full'>
+                <div className='flex h-10 space-x-2 mb-4 ml-4 mr-12'>
                   <Image className='cursor-pointer' src={"/assets/smile.png"} alt='smile' width={50} height={50} />
                   <input className=' w-full p-2 outline-none bg-orange-500 rounded-md' type='text' placeholder='Type your message here' onChange={(e:any) => setMessage(e.target.value)} />
                   <Image className='cursor-pointer' src={"/assets/file.png"} alt='file' width={50} height={50} />
