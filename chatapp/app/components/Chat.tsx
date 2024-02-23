@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Loader from './Loader';
 import React, {useEffect, useState} from 'react';
-import { useSearchParams } from 'next/navigation';
+// import { useSearchParams } from 'next/navigation';
 import { convertTime } from '../Utils/apiFeature';
 
 type Props = {
@@ -25,19 +25,29 @@ const Chat = (props: Props) => {
     address:""
   })
 
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
-  const noParams = () => {
-    return !searchParams.has("name") && !searchParams.has("address");
+  // const noParams = () => {
+  //   return !searchParams.has("name") && !searchParams.has("address");
+  // }
+
+  const noParams = (name:string, address:string) => {
+    return name.length == 0 && address.length == 0;
   }
 
   useEffect(() => {
-    if (noParams()) return;
-    setChatData({name:searchParams.get("name")!, address:searchParams.get("address")!});
-    props.readMessage(searchParams.get("address"));
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name") || "";
+    const address = params.get("address") || "";
+    if (noParams(name, address)) return;
+    setChatData({ name, address });
+    // setChatData({name:searchParams.get("name")!, address:searchParams.get("address")!});
+    // props.readMessage(searchParams.get("address"));
+    props.readMessage(address);
     
 
-  }, [searchParams])
+  }, [window.location.search])
+// }, [searchParams])
 
 
   useEffect(() => {
@@ -65,7 +75,8 @@ const Chat = (props: Props) => {
       requestAnimationFrame(animateScroll);
 
     }
-  }, [searchParams, props.friendMsg])
+  }, [window.location.search, props.friendMsg])
+// }, [searchParams, props.friendMsg])
 
 
   return (
