@@ -6,7 +6,7 @@ import UserCard from '../components/UserCard';
 
 type Props = {}
 
-const allusers = (props: Props) => {
+const AllUsers  = (props: Props) => {
     const {object, addFriends} = useContext<any>(ChatAppContext);
   return (
     <div>
@@ -22,4 +22,4 @@ const allusers = (props: Props) => {
   )
 }
 
-export default allusers
+export default AllUsers
