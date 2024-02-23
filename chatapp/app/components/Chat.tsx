@@ -36,17 +36,21 @@ const Chat = (props: Props) => {
   }
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get("name") || "";
-    const address = params.get("address") || "";
-    if (noParams(name, address)) return;
-    setChatData({ name, address });
+
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name") || "";
+      const address = params.get("address") || "";
+      if (noParams(name, address)) return;
+      setChatData({ name, address });
+      props.readMessage(address);
+    }
+
     // setChatData({name:searchParams.get("name")!, address:searchParams.get("address")!});
     // props.readMessage(searchParams.get("address"));
-    props.readMessage(address);
     
 
-  }, [window.location.search])
+  }, [typeof window !== 'undefined' && window.location.search])
 // }, [searchParams])
 
 
@@ -75,7 +79,7 @@ const Chat = (props: Props) => {
       requestAnimationFrame(animateScroll);
 
     }
-  }, [window.location.search, props.friendMsg])
+  }, [typeof window !== 'undefined' && window.location.search, props.friendMsg])
 // }, [searchParams, props.friendMsg])
 
 
