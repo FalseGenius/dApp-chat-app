@@ -64,7 +64,7 @@ const Model = (props: Props) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className='flex items-center space-x-2 bg-slate-900  p-2 rounded-md'>
+            {/* <div className='flex items-center space-x-2 bg-slate-900  p-2 rounded-md'>
               <Image src={images.account} alt="account" width={30} height={30} />
               <input
                 className='bg-slate-900 w-full outline-none'
@@ -72,7 +72,7 @@ const Model = (props: Props) => {
                 placeholder={accountAddress || "Enter address..."}
                 onChange={(e) => setAccountAddress(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className='flex flex-row  space-x-3'>
               <button className='bg-slate-900 basis-1/2 p-2 rounded-md text-orange-400 items-center justify-center flex space-x-2 font-semibold' onClick={() => props.functionName({name, accountAddress})}>
                 {""}

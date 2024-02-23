@@ -38,8 +38,6 @@ const Navbar = (props: Props) => {
 
 
   useEffect(() => {
-    console.log(active);
-    console.log(pathName);
     if (pathName == '/') setActive(1);
     else setActive(0);
   }, [])
@@ -89,7 +87,7 @@ const Navbar = (props: Props) => {
   
           {/* CONNECT WALLET FUNCTION */}
           <div className='p-4'>
-            {object.account === '' ? (
+            {object.account.length == 0 ? (
               <button className='flex p-2 rounded-md w-36 items-center justify-center space-x-2 bg-slate-800' onClick={connect}>
                 <span className='text-xs text-orange-400'>Connect Wallet</span>
               </button>
@@ -109,7 +107,7 @@ const Navbar = (props: Props) => {
 
       {/* Model Component */}
       {openModel && (
-        <div className='absolute top-0 z-50 bg-[#292f3f]'>
+        <div className='top-0 z-50 bg-[#292f3f] h-screen overflow-auto w-full fixed'>
           <Model 
             openBox={setOpenModel}
             title="Welcome To"
